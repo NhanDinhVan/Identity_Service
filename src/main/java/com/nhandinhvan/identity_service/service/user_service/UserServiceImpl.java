@@ -31,6 +31,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User createUser(UserCreationRequest request) {
+        if(userRepository.existsByUsername(request.getUsername()))
+            throw new RuntimeException("User exited !");
         User user = new User();
         user.setUsername(request.getUsername());
         user.setFirstName(request.getFirstName());
