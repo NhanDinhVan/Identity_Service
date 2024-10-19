@@ -5,6 +5,7 @@ import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdationReq
 import com.nhandinhvan.identity_service.entity.User;
 import com.nhandinhvan.identity_service.repository.UserRepository;
 import com.nhandinhvan.identity_service.service.user_service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping()
-    User createUser(@RequestBody UserCreationRequest request){
+    User createUser(@RequestBody @Valid UserCreationRequest request){
         return userService.createUser(request);
     }
 
