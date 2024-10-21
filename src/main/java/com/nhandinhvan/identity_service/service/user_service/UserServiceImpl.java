@@ -3,6 +3,8 @@ package com.nhandinhvan.identity_service.service.user_service;
 import com.nhandinhvan.identity_service.dto.request.user_request.UserCreationRequest;
 import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdationRequest;
 import com.nhandinhvan.identity_service.entity.User;
+import com.nhandinhvan.identity_service.exception.AppException;
+import com.nhandinhvan.identity_service.exception.ErrorCode;
 import com.nhandinhvan.identity_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +53,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUser(String id) {
         return userRepository.findById(id).orElseThrow(()->
-            new RuntimeException("User not found!")
+            new AppException(ErrorCode.USER_EXISTED)
         );
     }
 

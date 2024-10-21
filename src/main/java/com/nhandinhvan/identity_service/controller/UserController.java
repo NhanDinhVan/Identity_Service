@@ -2,6 +2,7 @@ package com.nhandinhvan.identity_service.controller;
 
 import com.nhandinhvan.identity_service.dto.request.user_request.UserCreationRequest;
 import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdationRequest;
+import com.nhandinhvan.identity_service.dto.response.ApiResponse;
 import com.nhandinhvan.identity_service.entity.User;
 import com.nhandinhvan.identity_service.repository.UserRepository;
 import com.nhandinhvan.identity_service.service.user_service.UserService;
@@ -34,8 +35,10 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping()
-    User createUser(@RequestBody @Valid UserCreationRequest request){
-        return userService.createUser(request);
+    ApiResponse<User> createUser(@RequestBody @Valid UserCreationRequest request){
+        ApiResponse<User> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.createUser(request));
+        return apiResponse;
     }
 
     @GetMapping()
