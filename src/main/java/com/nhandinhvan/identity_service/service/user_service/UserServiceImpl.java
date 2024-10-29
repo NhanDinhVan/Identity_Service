@@ -1,11 +1,15 @@
 package com.nhandinhvan.identity_service.service.user_service;
 
 import com.nhandinhvan.identity_service.dto.request.user_request.UserCreationRequest;
-import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdationRequest;
+import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdateRequest;
 import com.nhandinhvan.identity_service.entity.User;
 import com.nhandinhvan.identity_service.exception.AppException;
 import com.nhandinhvan.identity_service.exception.ErrorCode;
+import com.nhandinhvan.identity_service.mapper.UserMapper;
 import com.nhandinhvan.identity_service.repository.UserRepository;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,21 +30,19 @@ import java.util.List;
  * 10/13/2024    NhanDinhVan    Create
  */
 @Service
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserServiceImpl implements UserService{
 
-    @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
+    UserMapper userMapper;
 
     @Override
     public User createUser(UserCreationRequest request) {
         if(userRepository.existsByUsername(request.getUsername()))
             throw new RuntimeException("User exited !");
-        User user = new User();
-        user.setUsername(request.getUsername());
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setPassword(request.getPassword());
-        user.setDob(request.getDob());
+
+        User user = userMapper.toUser(request);
 
         return userRepository.save(user);
     }
@@ -58,12 +60,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User updateUser(String userId, UserUpdationRequest request) {
+    public User updateUser(String userId, UserUpdateRequest request) {
         User user = getUser(userId);
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setPassword(request.getPassword());
-        user.setDob(request.getDob());
+
+        userMapper.updateUser(user, request);
+
         return userRepository.save(user);
     }
 
