@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUser(String id) {
         return userRepository.findById(id).orElseThrow(()->
-            new AppException(ErrorCode.USER_EXISTED)
+            new AppException(ErrorCode.USER_NOT_EXISTED)
         );
     }
 
