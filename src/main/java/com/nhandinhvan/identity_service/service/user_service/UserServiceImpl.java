@@ -1,7 +1,7 @@
 package com.nhandinhvan.identity_service.service.user_service;
 
 import com.nhandinhvan.identity_service.dto.request.user_request.UserCreationRequest;
-import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdationRequest;
+import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdateRequest;
 import com.nhandinhvan.identity_service.entity.User;
 import com.nhandinhvan.identity_service.exception.AppException;
 import com.nhandinhvan.identity_service.exception.ErrorCode;
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User updateUser(String userId, UserUpdationRequest request) {
+    public User updateUser(String userId, UserUpdateRequest request) {
         User user = getUser(userId);
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());

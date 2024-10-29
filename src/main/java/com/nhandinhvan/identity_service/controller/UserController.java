@@ -1,7 +1,7 @@
 package com.nhandinhvan.identity_service.controller;
 
 import com.nhandinhvan.identity_service.dto.request.user_request.UserCreationRequest;
-import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdationRequest;
+import com.nhandinhvan.identity_service.dto.request.user_request.UserUpdateRequest;
 import com.nhandinhvan.identity_service.dto.response.ApiResponse;
 import com.nhandinhvan.identity_service.entity.User;
 import com.nhandinhvan.identity_service.repository.UserRepository;
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    User updateUser(@RequestBody UserUpdationRequest request, @PathVariable("userId") String userId){
+    User updateUser(@RequestBody UserUpdateRequest request, @PathVariable("userId") String userId){
         return userService.updateUser(userId, request);
     }
 
