@@ -11,3 +11,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+jwt:
+  signerKey: "AfyKS4l4OE/78MfmDsZTpTUo9HQHWD5CE/WJ+jeVb8Xiv6OP2vL5LJIkVpmue8+3"

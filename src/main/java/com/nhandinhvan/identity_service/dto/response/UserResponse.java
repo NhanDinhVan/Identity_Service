@@ -1,34 +1,34 @@
 package com.nhandinhvan.identity_service.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDate;
+
 /**
- * ApiResponse
- * 
+ * UserResponse
+ * <p>
  * Version 1.0
- * 
- * Date:  10/21/2024 
- * 
+ * <p>
+ * Date:  10/29/2024
+ * <p>
  * Copyright
- * 
+ * <p>
  * Modification Logs:
  * DATE        AUTHOR        DESCRIPTION
  * --------------------------------------
- * 10/21/2024    NhanDinhVan    Create
+ * 10/29/2024    NhanDinhVan    Create
  */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResponse<T> {
-    @Builder.Default
-    int code = 1000;
-
-    @Builder.Default
-    String message = "Success";
-    T result;
+public class UserResponse {
+    String id;
+    String username;
+    String firstName;
+    String lastName;
+    LocalDate dob;
 }
