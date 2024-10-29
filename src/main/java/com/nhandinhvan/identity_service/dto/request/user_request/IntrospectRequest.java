@@ -1,28 +1,29 @@
-package com.nhandinhvan.identity_service.dto.response;
+package com.nhandinhvan.identity_service.dto.request.user_request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 
 /**
- * AuthenticationReponse
+ * IntrospectRequest
  * <p>
  * Version 1.0
  * <p>
- * Date:  10/29/2024
+ * Date:  10/30/2024
  * <p>
  * Copyright
  * <p>
  * Modification Logs:
  * DATE        AUTHOR        DESCRIPTION
  * --------------------------------------
- * 10/29/2024    NhanDinhVan    Create
+ * 10/30/2024    NhanDinhVan    Create
  */
+
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AuthenticationResponse {
-    boolean authenticated;
+@Builder
+public class IntrospectRequest {
     String token;
 }

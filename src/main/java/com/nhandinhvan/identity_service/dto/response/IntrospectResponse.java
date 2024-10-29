@@ -4,25 +4,24 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 /**
- * AuthenticationReponse
+ * IntrospectResponse
  * <p>
  * Version 1.0
  * <p>
- * Date:  10/29/2024
+ * Date:  10/30/2024
  * <p>
  * Copyright
  * <p>
  * Modification Logs:
  * DATE        AUTHOR        DESCRIPTION
  * --------------------------------------
- * 10/29/2024    NhanDinhVan    Create
+ * 10/30/2024    NhanDinhVan    Create
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AuthenticationResponse {
-    boolean authenticated;
-    String token;
+public class IntrospectResponse {
+    Boolean valid;
 }
